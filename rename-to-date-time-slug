@@ -1,0 +1,31 @@
+#!/bin/sh
+set -euf
+
+##
+# Rename files to date-time slug format "yyyy-mm-dd-hh-mm-ss".
+#
+# Syntax:
+#
+#     rename-to-date-time-slug <file> …
+#
+# Example:
+#
+#     rename-to-date-time-slug "Foo 2020/01/01 00:00:00 Bar.jpg"
+#     => 2020-01-01-00-00-00.jpg
+#
+# TODO:
+#
+#   * Upgrade so the pattern match doesn't need a dot extension.
+#
+# ## Tracking
+#
+#   * Program: rename-to-date-time-slug
+#   * Version: 1.0.0
+#   * Created: 2022-04-29T10:39:12Z
+#   * Updated: 2022-04-29T10:39:12Z
+#   * License: GPL
+#   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
+##
+
+rename 's/.*?(\d{4}).*?(\d{2}).*?(\d{2}).*?(\d{2})(\d{2})(\d{2}).*?\./$1-$2-$3-$4-$5-$6./;' "$@"
+
